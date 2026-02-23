@@ -13,6 +13,13 @@ func calcWithoutTax(price float64)float64{
 func printPrice(product string,price float64,calculator func(float64) float64){
 	fmt.Println("product:",product,"price:",calculator(price))
 }
+//Using function as result
+func selectCalculator(price float64)func(float64) float64{
+	if price> 100{
+		return calcWithTax
+	} 
+	return calcWithoutTax
+}
 func main(){
 	products:=map[string]float64{
 		"Kayak":275,
